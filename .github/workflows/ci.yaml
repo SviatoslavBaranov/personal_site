@@ -1,0 +1,29 @@
+name : CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout rep
+      - uses: actions/checkout@v3
+
+      - name: Install node.js 
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: install depends
+        run: npm install
+
+      - name: check TS types
+        run: npm run typecheck
+
+      - name: build a project
+        run: npm run build
