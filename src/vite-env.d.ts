@@ -1,0 +1,3 @@
+/// <reference types="vite/client" />
+VITE_SUPABASE_URL= 'https://hwzbxjkgdktupckixcwt.supabase.co'
+VITE_SUPABASE_ANON_KEY= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3emJ4amtnZGt0dXBja2l4Y3d0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDcwMjg0NDYsImV4cCI6MjA2MjYwNDQ0Nn0.bNYhetzXyqf0pLnhmz7ozP7jMG6hu80rWAEwAizMl8k'

@@ -1,0 +1,25 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+   "compilerOptions": {
+    
+      "target": "ESNext",
+      "module": "CommonJS",
+
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["./src/*"]
+    },
+    "moduleResolution": "Node",
+      "jsx": "react-jsx",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "resolveJsonModule": true,
+    },
+    "include": ["src"]
+}
