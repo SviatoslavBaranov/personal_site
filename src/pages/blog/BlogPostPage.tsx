@@ -53,9 +53,7 @@ const BlogPostPage = () => {
 
           
             <div className="prose prose-lg max-w-none text-gray-800 mt-10">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {post.content}
-              </ReactMarkdown>
+              <ReactMarkdown children={post.content} remarkPlugins={[remarkGfm]} />
             </div>
           </div>
         </div>
@@ -70,11 +68,12 @@ const BlogPostPage = () => {
               ← Назад ко всем постам
             </button>
           </div>
+          
           <Sidebar
-            onCategorySelect={(category) =>
+            onCategorySelect={(category: string) =>
               navigate(category ? `/blog?category=${encodeURIComponent(category)}` : "/blog")
             } 
-            onSearch={(query) =>
+            onSearch={(query: string) =>
               navigate(`/blog?search=${encodeURIComponent(query)}`)
             }  
           />  

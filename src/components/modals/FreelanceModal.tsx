@@ -18,6 +18,7 @@ const FreelanceModal: React.FC = () => {
       email: '',
       message: ''
     });
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
     const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
@@ -31,7 +32,7 @@ const FreelanceModal: React.FC = () => {
         });
 
         if (response.ok) {
-          alert("Заявка успешно отправлена!");
+          setSuccessMessage("Заявка успешно отправлена!");
           setFormData({ name: '', email: '', message: '' });
           setShowForm(false);
         } else {
@@ -103,6 +104,11 @@ const FreelanceModal: React.FC = () => {
                     />
                   </div>
                 </div>
+                {successMessage && (
+                  <div className="p-3 mb-2 mt-5 rounded bg-green-100 text-green-800 text-sm">
+                    {successMessage}
+                  </div>
+                )}
                 {showForm && (
                   <div className="mt-4 p-4 border rounded-lg bg-gray-50">
                     <form onSubmit={handleSubmit} className="space-y-4 w-full md:flex-1 max-h-[50vh] overflow-y-auto">

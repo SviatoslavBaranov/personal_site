@@ -24,3 +24,7 @@ yarn-error.log*
 
 # TypeScript
 *.tsbuildinfo
+
+# Не отслеживать декларации, если они вдруг появятся в src
+src/**/*.d.ts
+!src/vite-env.d.ts

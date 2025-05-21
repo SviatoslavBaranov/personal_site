@@ -1,7 +1,12 @@
 import React from "react";
 import { useModalStore } from "@/store/modalStore";
 
-const Sidebar: React.FC = () => {
+export interface SidebarProps {
+  onCategorySelect?: (category: string) => void;
+  onSearch?: (query: string) => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = () => {
   const { openModal } = useModalStore();
 
   return (

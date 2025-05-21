@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5050;
 app.use(cors());
 app.use(express.json());
 
-app.get('/api/ping', (_req, res) => {
+app.get('api/ping', (_req, res) => {
   res.send('pong');
 });
 
