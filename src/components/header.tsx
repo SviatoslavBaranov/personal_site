@@ -14,7 +14,7 @@ const Header: React.FC = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/30 backdrop-blur-md shadow-md border-b border-white/40">
       <nav className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         <div className="text-xl font-bold text-gray-800">
-          <a href="#home">Max | React Web Developer</a>
+          <a href="#home">{t('header.title')}</a>
         </div>
         <div className="md:hidden">
           <button

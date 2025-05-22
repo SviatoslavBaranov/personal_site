@@ -1,16 +1,23 @@
 {
   "header": {
+    "COMMENT": "HEADER AND FOOTER ARE HERE",
     "freelance": "Order Website",
     "interview": "Interview",
     "skills": "Skills",
     "portfolio": "Portfolio",
-    "blog": "Blog"
+    "blog": "Blog",
+    "title": "Max | React Web Developer",
+    "privacy": "Privacy Policy",
+    "footer_nav_title": "Quick Links",
+    "footer_follow": "Follow Me"
   },
   "freelance": {
     "fast": "🚀 Fast delivery – Get your fully functional website in as little as 2 weeks.",
     "responsive": "📱 Fully responsive – Optimized for all devices and screen sizes.",
     "focused": "🎯 Business-focused design – Built to attract, convert, and retain customers.",
-    "month": "🔧 1-month support – Free maintenance and adjustments after launch."
+    "month": "🔧 1-month support – Free maintenance and adjustments after launch.",
+    "btn_order": "Order site",
+    "btn_interview": "Call for Interview"
   },
   "freelanceModal": {
     "title": "Website development that delivers",
@@ -39,5 +46,9 @@
     "ps": "P.S. You’ll find more about me on this site. If you’re looking for a frontend developer you can trust to take charge without constant hand-holding — we might be a good fit.",
     "interview_btn": "Invite to Interview",
     "cv_btn": "Open CV"
+  },
+  "hero": {
+    "title": "Hello, I'm Max",
+    "descr": "I build modern, fast, and business-driven websites that not only look great — they work. My toolkit is built around the trusted React ecosystem, and I focus on delivering real value rather than chasing vanity metrics. With a background in marketing, sales, and team management, I understand how to align digital solutions with business goals — turning a website into a growth tool, not just a pretty wrapper. Feel free to explore the site, check out my tech blog, or get in touch using the buttons above. Let’s talk about your project — I’m just one click away."
   }
 }

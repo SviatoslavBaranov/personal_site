@@ -1,10 +1,9 @@
-//import FreelanceCard from './FreelanceCard';
-//import InterviewCard from './InterviewCard';
 import { useModalStore } from '@/store/modalStore';
+import { useTranslation } from 'react-i18next';
 
 const FreelanceSection: React.FC = () => {
     const openModal = useModalStore((state) => state.openModal);
-    //const modal = useModalStore((state) => state.modal);
+    const { t } = useTranslation();
 
     return (
 
@@ -50,7 +49,7 @@ const FreelanceSection: React.FC = () => {
 
                 Name: Baranov Sviatoslav
                 Position: React Frontend Developer  
-                Experience: 3.5 years  
+                Experience: few years  
                 Location: Shanghai, China (UTC+8)  
                 <br/>
                 <br/>
@@ -70,8 +69,8 @@ const FreelanceSection: React.FC = () => {
                 <br/>
                 <br/>
                 Contact:  
-                📧 maxim.webdev@email.com  
-                📞 WeChat: maxdev_sh
+                📧 maxfray94@gmail.com  
+                📞 WeChat: NoSuch_Person
 
                 Available for:  
                 • Tech Interview  
@@ -85,36 +84,15 @@ const FreelanceSection: React.FC = () => {
                     onClick={() => openModal('freelance')}
                     className='w-42 h-42 bg-white/20 backdrop-blur-md rounded-full shadow-lg justify-center text-xl font-semibold hover:scale-150 transition text-blue-900'    
                 >
-                    Заказать сайт
+                    {t('freelance.btn_order')}
                 </button>
                 <button
                     onClick={() => openModal('interview')}
                     className='w-42 h-42 bg-white/20 backdrop-blur-md rounded-full shadow-lg justify-center text-xl font-semibold hover:scale-150 transition text-blue-900'
                 >
-                    Пригласить на интервью
+                    {t('freelance.btn_interview')}
                 </button>
             </div>
-
-            {/* Modal overlay */}
-            {/* {modal && (
-                <div
-                className='absolute inset-0 bg-black/50 backdrop-blur-sm z-20 flex justify-center items-center'
-                onClick={() => openModal(null)}
-                >
-                    <div
-                    className='bg-white rounded-2xl shadow-2xl p-10 w-full max-w-2xl mx-4 relative'
-                    onClick={(e) => e.stopPropagation()}
-                    >
-                        <button
-                        onClick={() => openModal(null)}
-                        className='absolute top-4 right-4 text-gray-400 hover:text-gray-700'
-                        >
-                          ✖
-                        </button>
-                        {modal === 'freelance' ? <FreelanceCard /> : <InterviewCard />}
-                    </div>
-                </div>
-            )} */}
 
         </section>
     );
