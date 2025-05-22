@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useModalStore } from "@/store/modalStore";
 import { PopupButton } from 'react-calendly';
-
+import { useTranslation } from 'react-i18next';
 
 interface FormData {
   name: string;
@@ -11,6 +11,7 @@ interface FormData {
 
 const FreelanceModal: React.FC = () => {
     const { modal, openModal } = useModalStore();
+    const { t } = useTranslation();
 
     const [showForm, setShowForm] = useState(false);
     const [formData, setFormData] = useState<FormData>({
@@ -32,15 +33,15 @@ const FreelanceModal: React.FC = () => {
         });
 
         if (response.ok) {
-          setSuccessMessage("Заявка успешно отправлена!");
+          setSuccessMessage(`${t('freelanceModal.alert_success')}`);
           setFormData({ name: '', email: '', message: '' });
           setShowForm(false);
         } else {
-          alert("Произошла ошибка при отправке. Попробуйте позже.");
+          alert(`${t('freelanceModal.alert_fail')}`);
         }
       } catch (error) {
         console.error("Ошибка отправки формы:", error);
-        alert("Ошибка подключения к серверу.");
+        alert(`${t('freelanceModal.alert_fail_server')}`);
       }
     };
 
@@ -63,28 +64,26 @@ const FreelanceModal: React.FC = () => {
                     ×
                 </button>
 
-                <h2 className="text-2xl font-bold mb-4 text-gray-800">Создание сайта под ключ</h2>
+                <h2 className="text-2xl font-bold mb-4 text-gray-800">{t('freelanceModal.title')}</h2>
                 
                 <p className="text-gray-700 mb-4">
-                    Подготовлю и задеплою современный сайт на React под любые задачи — от лендинга до корпоративного портала. 
-                    Минимальные сроки — от 2 недель.
+                    {t('freelanceModal.first')}
+                </p>
+                  
+                <p className="text-gray-700 mb-4">
+                    {t('freelanceModal.second')}
                 </p>
 
                 <p className="text-gray-700 mb-4">
-                    Привлеку и организую работу необходимых специалистов: UI/UX-дизайнер, backend-разработчик, копирайтер, QA-инженер, 
-                    фотограф, SEO-оптимизатор, проект-менеджер и другие при необходимости.
+                    {t('freelanceModal.third')}
                 </p>
 
                 <p className="text-gray-700 mb-4">
-                    Для каждого специалиста провожу отбор, тестирование и предоставляю полную информацию о причинах выбора.
-                </p>
-
-                <p className="text-gray-700 mb-4">
-                    После релиза — 1 месяц технической поддержки включён.
+                    {t('freelanceModal.fourth')}
                 </p>
 
                 <p className="text-xs text-gray-500 mb-6">
-                    * Сторонние специалисты привлекаются по согласованию с заказчиком и оплачиваются отдельно на основании сметы.
+                    {t('freelanceModal.additional')}
                 </p>
                 <div className="flex flex-col sm:flex-row sm:justify-start sm:gap-4 mt-6">
                   <div className="w-full sm:w-auto mb-2 sm:mb-0">
@@ -92,14 +91,14 @@ const FreelanceModal: React.FC = () => {
                       onClick={() => setShowForm(!showForm)}
                       className="bg-gray-100 text-gray-800 px-5 py-2 rounded-full shadow hover:bg-gray-200 transition w-full sm:w-auto"
                     >
-                      {showForm ? 'Скрыть форму' : 'Оставить заявку'}
+                      {showForm ? `${t('freelanceModal.hide_btn')}` : `${t('freelanceModal.order_btn')}`}
                     </button>
                   </div>
                   <div className="w-full sm:w-auto flex items-center">
                     <PopupButton
                       url="https://calendly.com/baranov_si/30min"
                       rootElement={document.getElementById('root')!}
-                      text="Назначить созвон"
+                      text={t('freelanceModal.appoint_btn')}
                       className="bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700 transition w-full sm:w-auto"
                     />
                   </div>
@@ -114,7 +113,7 @@ const FreelanceModal: React.FC = () => {
                     <form onSubmit={handleSubmit} className="space-y-4 w-full md:flex-1 max-h-[50vh] overflow-y-auto">
                         <input
                         type="text"
-                        placeholder="Имя"
+                        placeholder={t('freelanceModal.form_name_plhldr')}
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className="w-full px-4 py-2 border border-gray-300 rounded-md"
@@ -127,7 +126,7 @@ const FreelanceModal: React.FC = () => {
                         className="w-full px-4 py-2 border border-gray-300 rounded-md"
                         />
                         <textarea
-                        placeholder="Сообщение"
+                        placeholder={t('freelanceModal.form_text_plhldr')}
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         rows={4}
@@ -137,7 +136,7 @@ const FreelanceModal: React.FC = () => {
                         type="submit"
                         className="bg-blue-600 text-white px-4 py-2 rounded-full shadow hover:bg-blue-700 transition"
                         >
-                        Отправить
+                        {t('freelanceModal.form_send_btn')}
                         </button>
                         
                     </form>
