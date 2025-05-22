@@ -46,7 +46,7 @@ const InterviewModal: React.FC = () => {
                           className="bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700 transition"
                       />
                     <a
-                      href="/CV_Max_React.pdf"
+                      href="/CV_R_Baranov_SI_2025.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bg-white border border-gray-300 text-gray-800 px-5 py-2 rounded-full shadow hover:bg-gray-100 transition"
