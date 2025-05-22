@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useModalStore } from '@/store/modalStore';
 import { Menu, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import i18n from '@/i18n';
 
 const Header: React.FC = () => {
   const openModal = useModalStore((state) => state.openModal);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/30 backdrop-blur-md shadow-md border-b border-white/40">
@@ -24,20 +27,34 @@ const Header: React.FC = () => {
         <ul className="hidden md:flex space-x-6">
           <li>
             <button onClick={() => openModal('freelance')} className="text-gray-600 hover:text-blue-600">
-              Заказать Сайт
+              {t('header.freelance')}
             </button>
           </li>
           <li>
             <button onClick={() => openModal('interview')} className="text-gray-600 hover:text-blue-600">
-              Интервью
+              {t('header.interview')}
             </button>
           </li>
-          <li><a href="#about" className="text-gray-600 hover:text-blue-600">Навыки</a></li>
-          <li><a href="#portfolio" className="text-gray-600 hover:text-blue-600">Портфолио</a></li>
+          <li><a href="#about" className="text-gray-600 hover:text-blue-600">{t('header.skills')}</a></li>
+          <li><a href="#portfolio" className="text-gray-600 hover:text-blue-600">{t('header.portfolio')}</a></li>
           <li>
             <Link to="/blog" className="text-gray-600 hover:text-blue-600">
-              Блог
+              {t('header.blog')}
             </Link>
+          </li>
+          <li className="flex space-x-2 -mt-1">
+            <button
+              onClick={() => i18n.changeLanguage('ru')}
+              className="px-2 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100 transition"
+            >
+              RU
+            </button>
+            <button
+              onClick={() => i18n.changeLanguage('en')}
+              className="px-2 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100 transition"
+            >
+              EN
+            </button>
           </li>
         </ul>
       </nav>
@@ -48,19 +65,19 @@ const Header: React.FC = () => {
           <ul className="flex flex-col space-y-2">
             <li>
               <button onClick={() => { openModal('freelance'); setMenuOpen(false); }} className="text-gray-700 hover:text-blue-600 w-full text-left">
-                Заказать Сайт
+                {t('header.freelance')}
               </button>
             </li>
             <li>
               <button onClick={() => { openModal('interview'); setMenuOpen(false); }} className="text-gray-700 hover:text-blue-600 w-full text-left">
-                Интервью
+                {t('header.interview')}
               </button>
             </li>
-            <li><a href="#about" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600">Навыки</a></li>
-            <li><a href="#portfolio" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600">Портфолио</a></li>
+            <li><a href="#about" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600">{t('header.skills')}</a></li>
+            <li><a href="#portfolio" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600">{t('header.portfolio')}</a></li>
             <li>
               <Link to="/blog" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600">
-                Блог
+                {t('header.blog')}
               </Link>
             </li>
           </ul>
