@@ -1,4 +1,8 @@
+import { useTranslation } from 'react-i18next';
+
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
+
     return (
       <footer className="w-full id='footer'">
         {/* Google Map */}
@@ -22,21 +26,21 @@ const Footer: React.FC = () => {
             </div>
   
             <div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-500">Quick Links</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-500">{t('header.footer_nav_title')}</h3>
               <ul className="space-y-2">
-                <li><a href="#interview" className="hover:text-white text-gray-600">Join Project</a></li>
-                <li><a href='#about' className="hover:text-white text-gray-600">Skills</a></li>
-                <li><a href="#order" className="hover:text-white text-gray-600">Order a Website</a></li>
-                <li><a href="#portfolio" className="hover:text-white text-gray-600">Portfolio</a></li>
-                <li><a href="#privacy" className="hover:text-white text-gray-600">Privacy Policy</a></li>
+                <li><a href="#interview" className="hover:text-white text-gray-600">{t('header.interview')}</a></li>
+                <li><a href='#about' className="hover:text-white text-gray-600">{t('header.skills')}</a></li>
+                <li><a href="#order" className="hover:text-white text-gray-600">{t('header.freelance')}</a></li>
+                <li><a href="#portfolio" className="hover:text-white text-gray-600">{t('header.portfolio')}</a></li>
+                <li><a href="#privacy" className="hover:text-white text-gray-600">{t('header.privacy')}</a></li>
               </ul>
             </div>
   
             <div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-500">Follow Me</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-500">{t('header.footer_follow')}</h3>
               <ul className="space-y-2">
                 <li><a href="#" className="hover:text-white text-gray-600">LinkedIn</a></li>
-                <li><a href="#" className="hover:text-white text-gray-600">GitHub</a></li>
+                <li><a href="https://github.com/SviatoslavBaranov" className="hover:text-white text-gray-600">GitHub</a></li>
                 <li><a href="#" className="hover:text-white text-gray-600">Twitter</a></li>
                 <li><a href="#" className="hover:text-white text-gray-600">Instagram</a></li>
               </ul>

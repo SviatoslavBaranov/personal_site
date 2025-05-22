@@ -1,10 +1,12 @@
 import React from "react";
 import { useModalStore } from "@/store/modalStore";
 import { PopupButton } from 'react-calendly';
+import { useTranslation } from "react-i18next";
 
 
 const InterviewModal: React.FC = () => {
     const { modal, openModal } = useModalStore();
+    const { t } = useTranslation();
 
     if (modal !== 'interview') return null;
 
@@ -25,24 +27,24 @@ const InterviewModal: React.FC = () => {
                   >
                       ×
                   </button>
-                  <h2 className="text-2xl font-bold mb-4 text-gray-800">Готов к интервью</h2>
+                  <h2 className="text-2xl font-bold mb-4 text-gray-800">{t('interviewModal.title')}</h2>
                   <p className="text-gray-700 mb-4 leading-relaxed">
-                    Умею быстро включаться в процессы, брать на себя ответственность и доводить задачи до результата. В команде стараюсь не просто закрывать тикеты, а быть партнером: инициировать улучшения, предлагать решения, видеть и понимать бизнес-цели.
+                    {t('interviewModal.first')}
                   </p>
                   <ul className="list-disc list-inside text-gray-700 mb-4 space-y-1">
-                    <li>Чётко понимаю, зачем нужен фронтенд и как сделать его ценным</li>
-                    <li>Хорошо владею React, TypeScript, TailwindCSS и Supabase</li>
-                    <li>Не боюсь сложностей и умею работать с неопределённостью</li>
-                    <li>Знаю, когда предложить помощь, а когда лучше не мешать</li>
+                    <li>{t('interviewModal.li1')}</li>
+                    <li>{t('interviewModal.li2')}</li>
+                    <li>{t('interviewModal.li3')}</li>
+                    <li>{t('interviewModal.li4')}</li>
                   </ul>
                   <p className="text-gray-600 text-sm mb-6">
-                    P.S. Больше обо мне — на сайте. Если вы ищете разработчика, которому можно доверить интерфейс и не держать его за руку — возможно, мы подходим друг другу.
+                    {t('interviewModal.ps')}
                   </p>
                   <div className="flex justify-end gap-4">
                       <PopupButton
                           url="https://calendly.com/baranov_si/30min"
                           rootElement={document.getElementById('root')!}
-                          text="Пригласить на интервью"
+                          text={t('interviewModal.interview_btn')}
                           className="bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700 transition"
                       />
                     <a
@@ -51,7 +53,7 @@ const InterviewModal: React.FC = () => {
                       rel="noopener noreferrer"
                       className="bg-white border border-gray-300 text-gray-800 px-5 py-2 rounded-full shadow hover:bg-gray-100 transition"
                     >
-                      Открыть CV
+                      {t('interviewModal.cv_btn')}
                     </a>
                   </div>
                 </div>

@@ -1,4 +1,8 @@
+import { useTranslation } from 'react-i18next';
+
 const Freelance: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <section id='interview' className="relative min-h-screen w-full overflow-hidden flex justify-center items-center px-10 py-20 ">
       {/* Top part of bg */}
@@ -12,10 +16,10 @@ const Freelance: React.FC = () => {
         <div className="w-1/3 min-w-[300px] bg-white/80 backdrop-blur-md rounded-2xl shadow-xl p-10 transform transition duration-300 hover:scale-105">
           <h2 className="text-3xl font-semibold mb-10">Freelance</h2>
           <ul className="space-y-6 text-lg text-gray-700 font-light leading-relaxed list-none">
-            <li className="flex items-start"><span className="text-blue-600 mr-4 mt-1">✔</span> 🚀 Fast delivery – Get your fully functional website in as little as 2 weeks.</li>
-            <li className="flex items-start"><span className="text-blue-600 mr-4 mt-1">✔</span> 📱 Fully responsive – Optimized for all devices and screen sizes.</li>
-            <li className="flex items-start"><span className="text-blue-600 mr-4 mt-1">✔</span> 🎯 Business-focused design – Built to attract, convert, and retain customers.</li>
-            <li className="flex items-start"><span className="text-blue-600 mr-4 mt-1">✔</span> 🔧 1-month support – Free maintenance and adjustments after launch.</li>
+            <li className="flex items-start"><span className="text-blue-600 mr-4 mt-1">✔</span> {t('freelance.fast')}</li>
+            <li className="flex items-start"><span className="text-blue-600 mr-4 mt-1">✔</span> {t('freelance.responsive')}</li>
+            <li className="flex items-start"><span className="text-blue-600 mr-4 mt-1">✔</span> {t('freelance.focused')}</li>
+            <li className="flex items-start"><span className="text-blue-600 mr-4 mt-1">✔</span> {t('freelance.month')}</li>
           </ul>
           <div className="flex justify-center">
             <button className="mt-10 bg-blue-600 text-white px-10 py-4 rounded hover:bg-blue-500 transition">Place an order</button>

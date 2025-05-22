@@ -1,0 +1,54 @@
+{
+  "header": {
+    "COMMENT": "HEADER AND FOOTER ARE HERE",
+    "freelance": "Order Website",
+    "interview": "Interview",
+    "skills": "Skills",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "title": "Max | React Web Developer",
+    "privacy": "Privacy Policy",
+    "footer_nav_title": "Quick Links",
+    "footer_follow": "Follow Me"
+  },
+  "freelance": {
+    "fast": "🚀 Fast delivery – Get your fully functional website in as little as 2 weeks.",
+    "responsive": "📱 Fully responsive – Optimized for all devices and screen sizes.",
+    "focused": "🎯 Business-focused design – Built to attract, convert, and retain customers.",
+    "month": "🔧 1-month support – Free maintenance and adjustments after launch.",
+    "btn_order": "Order site",
+    "btn_interview": "Call for Interview"
+  },
+  "freelanceModal": {
+    "title": "Website development that delivers",
+    "first": "I build and deploy modern, high-performing websites using React — from landing pages to complex portals. Delivery starts in just 2 weeks.",
+    "second": "Need more than a developer? I assemble and manage a team tailored to your needs: UI/UX designer, backend engineer, copywriter, QA tester, photographer, SEO expert, or project manager.",
+    "third": "Each expert is carefully vetted, tested, and selected — and I’ll share all the details behind each choice.",
+    "fourth": "After launch, you’ll receive one month of technical support — included, no extra fees.",
+    "additional": "* Third-party specialists are engaged only with client approval and billed separately based on a transparent estimate.",
+    "order_btn": "Get a quote",
+    "hide_btn": "Hide form",
+    "appoint_btn": "Book a call",
+    "form_name_plhldr": "Your name",
+    "form_text_plhldr": "Your message",
+    "form_send_btn": "Send",
+    "aler_success": "Message sent successfully!",
+    "alert_fail": "Something went wrong. Please try again later.",
+    "alert_fail_server": "Server error. Please try again soon."
+  },
+  "interviewModal": {
+    "title": "Ready for the Interview",
+    "first": "I dive into projects quickly, take ownership, and always see tasks through. I’m not just here to close tickets — I work as a true partner: suggesting improvements, finding solutions, and keeping business goals in focus.",
+    "li1": "Clear understanding of frontend’s role and how to bring value",
+    "li2": "Strong with React, TypeScript, TailwindCSS, and Supabase",
+    "li3": "Comfortable with ambiguity and solving complex challenges",
+    "li4": "Know when to offer help — and when to stay out of the way",
+    "ps": "P.S. You’ll find more about me on this site. If you’re looking for a frontend developer you can trust to take charge without constant hand-holding — we might be a good fit.",
+    "interview_btn": "Invite to Interview",
+    "cv_btn": "Open CV"
+  },
+  "hero": {
+    "title": "Hello, I'm Max",
+    "descr": "I build modern, fast, and business-driven websites that not only look great — they work. My toolkit is built around the trusted React ecosystem, and I focus on delivering real value rather than chasing vanity metrics. With a background in marketing, sales, and team management, I understand how to align digital solutions with business goals — turning a website into a growth tool, not just a pretty wrapper. Feel free to explore the site, check out my tech blog, or get in touch using the buttons above. Let’s talk about your project — I’m just one click away."
+  }
+}
