@@ -2,15 +2,17 @@ import { useEffect, useState } from "react";
 import { getSortedPostsdata } from "@/lib/blog";
 import { Link } from 'react-router-dom';
 import type { PostMeta } from '@/types/blog-types';
+import { useLanguageStore } from "@/store/languageStore";
 
 export default function BlogIndexPage() {
   const [posts, setPosts] = useState<PostMeta[]>([]);
+  const lang = useLanguageStore.getState().language;
 
   useEffect(() => {
-    getSortedPostsdata()
+    getSortedPostsdata(1, 5, lang)
     .then((data) => setPosts(data.posts))
     .catch(console.error);
-  }, []);
+  }, [lang]);
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">

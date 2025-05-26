@@ -14,7 +14,6 @@ const BlogIndexPage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
- // const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const category = searchParams.get("category") || "";
   const searchQuery = searchParams.get("search") || "";
