@@ -44,11 +44,36 @@
     "li3": "Comfortable with ambiguity and solving complex challenges",
     "li4": "Know when to offer help — and when to stay out of the way",
     "ps": "P.S. You’ll find more about me on this site. If you’re looking for a frontend developer you can trust to take charge without constant hand-holding — we might be a good fit.",
-    "interview_btn": "Invite to Interview",
+    "interview_btn": "Invite for Interview",
     "cv_btn": "Open CV"
   },
   "hero": {
     "title": "Hello, I'm Max",
     "descr": "I build modern, fast, and business-driven websites that not only look great — they work. My toolkit is built around the trusted React ecosystem, and I focus on delivering real value rather than chasing vanity metrics. With a background in marketing, sales, and team management, I understand how to align digital solutions with business goals — turning a website into a growth tool, not just a pretty wrapper. Feel free to explore the site, check out my tech blog, or get in touch using the buttons above. Let’s talk about your project — I’m just one click away."
+  },
+  "navbar": {
+    "news": "News",
+    "guides": "Guides",
+    "analysis": "Analysis",
+    "projects": "Projects",
+    "opinions": "Views",
+    "to_main_btn": "Back to Main  |",
+    "fresh": "Fresh",
+    "search_plhldr": "Enter the key word..."
+  },
+  "postcard": {
+    "read_more": "Read more →"
+  },
+  "blogIndexPage": {
+    "loading": "Loading...",
+    "load_more": "Load more"
+  },
+  "sidebar": {
+    "order_title": "Need a site?",
+    "order_text": "I build sites from the scratch and maintain them after",
+    "order_btn": "Order a site",
+    "hire_title": "Need a web developer?",
+    "hire_text": "I'm open for interview and cooperation offers",
+    "hire_btn": "Call for an interview"
   }
 }

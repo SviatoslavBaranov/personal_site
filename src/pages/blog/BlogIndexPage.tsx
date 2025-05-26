@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import PostCard from "@/components/PostCard";
 import Sidebar from "@/components/Sidebar";
 import type { Post } from "@/types/blog-types";
+import { useTranslation } from "react-i18next";
 
 const BlogIndexPage = () => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -14,7 +15,7 @@ const BlogIndexPage = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
  // const navigate = useNavigate();
-
+  const { t, i18n } = useTranslation();
   const category = searchParams.get("category") || "";
   const searchQuery = searchParams.get("search") || "";
 
@@ -22,9 +23,10 @@ const BlogIndexPage = () => {
     const fetchInitialPosts = async () => {
       setIsLoading(true);
       try {
-        const { posts: initialPosts, total } = await getSortedPostsdata(1);
+        const { posts: initialPosts, total } = await getSortedPostsdata(1, 5, i18n.language);
         setPosts(initialPosts);
         setTotalPosts(total);
+        setPage(1);
       } catch (error) {
         console.error("Ошибка загрузки постов:", error);
       } finally {
@@ -33,13 +35,13 @@ const BlogIndexPage = () => {
     };
 
     fetchInitialPosts();
-  }, []);
+  }, [i18n.language]);
 
   const loadMorePosts = async () => {
     const nextPage = page + 1;
     setIsLoading(true);
     try {
-      const { posts: newPosts } = await getSortedPostsdata(nextPage);
+      const { posts: newPosts } = await getSortedPostsdata(nextPage, 5, i18n.language);
       setPosts((prev) => [...prev, ...newPosts]);
       setPage(nextPage);
     } catch (error) {
@@ -108,7 +110,7 @@ const BlogIndexPage = () => {
             disabled={isLoading}
             className="px-6 py-3 text-gray-800 border-2 border-gray-300 rounded-lg transition-all duration-300 hover:bg-gray-100 backdrop-blur-md disabled:opacity-50"
           >
-            {isLoading ? "Загрузка..." : "Загрузить ещё"}
+            {isLoading ? `${t('blogIndexPage.loading')}` : `${t('blogIndexPage.load_more')}`}
           </button>
         </div>
       )}

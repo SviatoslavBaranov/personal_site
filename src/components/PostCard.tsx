@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import type { PostMeta } from '@/types/blog-types'
+import { useTranslation } from 'react-i18next';
 
 type PostCardProps = PostMeta
 
 const PostCard: React.FC<PostCardProps> = ({ slug, title, summary, date, image, category }) => {
+  const { t } = useTranslation();
+  
   return (
     <div className="bg-gray-50 p-4 rounded-xl shadow-md flex flex-col md:flex-row gap-4 hover:shadow-lg transition">
       {/* Картинка слева */}
@@ -25,7 +28,7 @@ const PostCard: React.FC<PostCardProps> = ({ slug, title, summary, date, image, 
         </div>
         <Link to={`/blog/${slug}`} className="self-end mt-4 md:mt-0 md:bottom-4 md:right-4 backdrop-blur-md bg-white/30 border border-white/40 text-sm text-gray-800 px-4 py-2 rounded-full shadow-lg hover:bg-white/50 transition"
 >
-          Читать далее →
+          {t('postcard.read_more')}
         </Link>
       </div>
     </div>
