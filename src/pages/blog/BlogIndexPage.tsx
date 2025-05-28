@@ -8,7 +8,6 @@ import type { Post } from "@/types/blog-types";
 import { useTranslation } from "react-i18next";
 
 
-
 const BlogIndexPage = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [page, setPage] = useState(1);

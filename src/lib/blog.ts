@@ -16,8 +16,11 @@ const postFields = [
   'published',
 ];
 
-const buildImageUrl = (id?: string): string | undefined =>
-  id ? `http://localhost:8055/assets/${id}` : undefined;
+export const buildImageUrl = (image?: string | { id: string }): string | undefined => {
+  if (typeof image === 'string') return `http://localhost:8055/assets/${image}`;
+  if (typeof image === 'object' && image?.id) return `http://localhost:8055/assets/${image.id}`;
+  return undefined;
+};
 
 export async function getSortedPostsdata(page: number, limit: number, language: string): Promise<{ posts: Post[]; total: number }> {
   const offset = (page - 1) * limit;

@@ -7,6 +7,7 @@ import type { Post } from "@/types/blog-types";
 import ReactMarkdown from "react-markdown"; 
 import remarkGfm from "remark-gfm";
 import { useTranslation } from "react-i18next";
+import { buildImageUrl } from "@/lib/blog";
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -14,6 +15,7 @@ const BlogPostPage = () => {
   const lang = i18n.language ?? 'en';
   const navigate = useNavigate();
   const [post, setPost] = useState<Post | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (slug) {
@@ -24,7 +26,7 @@ const BlogPostPage = () => {
   if (!post) {
     return <div className="text-center mt-20 text-gray-600">Загрузка...</div>;
   }
-
+  
   return (
     <div className="max-w-6xl mx-auto px-4 py-1">
       
@@ -49,13 +51,7 @@ const BlogPostPage = () => {
 
             
             <img
-              src={
-                typeof post.image === 'string'
-                  ? post.image
-                  : post.image?.id
-                  ? `http://localhost:8055/assets/${post.image.id}`
-                  : undefined
-              }
+              src={buildImageUrl(post.image)}
               alt={post.title}
               className="rounded-xl w-full object-cover max-h-[600px]"
             />
@@ -74,7 +70,7 @@ const BlogPostPage = () => {
               onClick={() => navigate("/blog")}
               className="text-blue-600 hover:underline text-sm"
             >
-              ← Назад ко всем постам
+              ←{t('sidebar.back_btn')} 
             </button>
           </div>
           
@@ -93,3 +89,5 @@ const BlogPostPage = () => {
 };
 
 export default BlogPostPage;
+
+// if user first open a post and after that click to change the lang -> cont. loading 
