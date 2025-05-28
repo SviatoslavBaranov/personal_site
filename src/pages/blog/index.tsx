@@ -24,7 +24,7 @@ export default function BlogIndexPage() {
               <h2 className="text-xl font-semibold text-blue-600 hover:underline">{post.title}</h2>
             </Link>
             <p className="text-sm text-gray-500">
-              {post.date} {post.updated ? `(обновлено: ${post.updated})` : ''}
+              {post.date} {post.updated_at ? `(обновлено: ${post.updated_at})` : ''}
             </p>
             <p className="mt-2 text-gray-700">{post.summary}</p>
           </li>

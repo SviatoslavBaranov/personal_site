@@ -13,7 +13,7 @@ const PostCard: React.FC<PostCardProps> = ({ slug, title, summary, date, image, 
       {/* Картинка слева */}
       <div className="w-full md:w-1/3 flex-shrink-0">
         <img
-          src={image}
+          src={typeof image === 'string' ? image : image?.id ? `http://localhost:8055/assets/${image.id}` : undefined}
           alt={title}
           className="w-full h-48 md:h-full object-cover rounded-lg"
         />

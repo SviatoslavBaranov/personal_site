@@ -8,15 +8,15 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 const BlogPostPage = () => {
-  const { slug } = useParams<{ slug: string }>();
+  const { slug, lang } = useParams<{ slug: string, lang: string }>();
   const navigate = useNavigate();
   const [post, setPost] = useState<Post | null>(null);
 
   useEffect(() => {
     if (slug) {
-      getPostData(slug).then(setPost).catch(console.error);
+      getPostData(slug, lang ?? 'en').then(setPost).catch(console.error);
     }
-  }, [slug]);
+  }, [slug, lang]);
 
   if (!post) {
     return <div className="text-center mt-20 text-gray-600">Загрузка...</div>;
@@ -46,7 +46,13 @@ const BlogPostPage = () => {
 
             
             <img
-              src={post.image}
+              src={
+                typeof post.image === 'string'
+                  ? post.image
+                  : post.image?.id
+                  ? `http://localhost:8055/assets/${post.image.id}`
+                  : undefined
+              }
               alt={post.title}
               className="rounded-xl w-full object-cover max-h-[600px]"
             />

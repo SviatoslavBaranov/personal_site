@@ -12,3 +12,5 @@ export type Post = {
   published: boolean;
   updated_at: string;
 };
+
+export type PostMeta = Pick<Post, 'slug' | 'title' | 'summary' | 'date' | 'image' | 'category' | 'updated_at'>;

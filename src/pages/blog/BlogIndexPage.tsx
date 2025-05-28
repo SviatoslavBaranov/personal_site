@@ -101,7 +101,7 @@ const BlogIndexPage = () => {
               title={post.title}
               summary={post.summary}
               date={post.date}
-              lang={post.lang}
+              updated_at={post.updated_at}
               image={post.image}
               category={post.category}
             />
