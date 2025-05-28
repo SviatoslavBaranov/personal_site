@@ -23,7 +23,12 @@ const BlogIndexPage = () => {
       setIsLoading(true);
       try {
         const { posts: initialPosts, total } = await getSortedPostsdata(1, 5, i18n.language);
-        setPosts(initialPosts);
+        setPosts(
+          initialPosts.map((post) => ({
+            ...post,
+            date: post.date ?? new Date().toISOString(),
+          }))
+        );
         setTotalPosts(total);
         setPage(1);
       } catch (error) {
@@ -41,7 +46,13 @@ const BlogIndexPage = () => {
     setIsLoading(true);
     try {
       const { posts: newPosts } = await getSortedPostsdata(nextPage, 5, i18n.language);
-      setPosts((prev) => [...prev, ...newPosts]);
+      setPosts((prev) => [
+        ...prev,
+        ...newPosts.map((post) => ({
+          ...post,
+          date: post.date ?? new Date().toISOString(),
+        })),
+      ]);
       setPage(nextPage);
     } catch (error) {
       console.error("Ошибка при подгрузке постов:", error);
@@ -116,5 +127,7 @@ const BlogIndexPage = () => {
     </div>
   );
 };
+
+
 
 export default BlogIndexPage;

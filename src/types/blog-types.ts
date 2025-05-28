@@ -1,17 +1,14 @@
 
-export interface PostMeta {
-    slug: string;
-    title: string;
-    summary: string;
-    date: string;
-    category: string;
-    lang: string;
-    updated?: string;
-    image?: string;
-  }
-  
-  
-  export interface Post extends PostMeta {
-    content: string;
-  }
-  
+export type Post = {
+  id: string;
+  title: string;
+  slug: string;
+  lang: string;
+  date: string;
+  category: string;
+  content: string;
+  image?: string | { id: string };
+  summary: string;
+  published: boolean;
+  updated_at: string;
+};

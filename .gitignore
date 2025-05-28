@@ -28,3 +28,23 @@ yarn-error.log*
 # Не отслеживать декларации, если они вдруг появятся в src
 src/**/*.d.ts
 !src/vite-env.d.ts
+
+# Directus uploads (prevent accidentally pushing images/files)
+directus/uploads/
+
+# Docker
+docker-compose.override.yml
+*.local.yml
+
+# Git LFS pointers (if using LFS for large files)
+*.psd
+*.png
+*.jpg
+*.jpeg
+*.zip
+
+# Logs and temp
+logs/
+*.log
+tmp/
+*.tmp

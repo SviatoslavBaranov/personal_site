@@ -1,70 +1,83 @@
-import { createClient } from "@supabase/supabase-js";
-import type {  Post } from "@/types/blog-types";
-import { useLanguageStore } from "@/store/languageStore";
+import  directus  from './directus';
+import type { Post } from '@/types/blog-types';
+import { readItems } from '@directus/sdk';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const postFields = [
+  'id',
+  'title',
+  'slug',
+  'lang',
+  'date',
+  'category',
+  'content',
+  'image',
+  'summary',
+  'updated_at',
+  'published',
+];
 
+const buildImageUrl = (id?: string): string | undefined =>
+  id ? `http://localhost:8055/assets/${id}` : undefined;
 
-const supabase = createClient(supabaseUrl, supabaseKey);
+export async function getSortedPostsdata(page: number, limit: number, language: string): Promise<{ posts: Post[]; total: number }> {
+  const offset = (page - 1) * limit;
 
-export async function getAllPostsSlugs() {
-    const lang = useLanguageStore.getState().language;
-    console.log("Fetching slugs with language:", lang);
-    const { data, error} = await supabase
-    .from('posts')
-    .select('slug')
-    .eq('lang', lang);
-    if (error) throw error;
+  const response = await directus.request(
+    readItems('posts', {
+      filter: {
+        lang: { _eq: language },
+        published: { _eq: true },
+      },
+      sort: ['-date'],
+      limit,
+      offset,
+      fields: postFields,
+    })
+  );
 
-    return (data ?? []).map((post) => ({ params: { slug: post.slug } }));
+  const posts = response as Post[];
+
+  const normalizedPosts = posts.map((post) => ({
+    ...post,
+    image: buildImageUrl(typeof post.image === 'string' ? post.image : post.image?.id),
+  }));
+
+  return {
+    posts: normalizedPosts,
+    total: posts.length // optionally replace this with a total count query if pagination UI needs it
+  };
 }
-
-export async function getSortedPostsdata(page = 1, pageSize = 5, lang: string): Promise<{ posts: Post[]; total: number}> {
-    const { data, error, count } = await supabase
-    .from('posts')
-    .select('slug, title, date, category, content, summary, lang, updated, image', { count: 'exact' })
-    .eq('lang', lang)
-    .order('date', {ascending: false })
-    .range((page - 1) * pageSize, page * pageSize - 1);
-
-    if (error) throw error;
-
-    return {
-      posts: data ?? [],
-      total: count ?? 0,
-    };
-    
-}
-
-export async function getPostData(slug: string): Promise<Post | null> {
-    console.log("Fetching post data for slug:", slug);
-    const { data, error } = await supabase
-      .from('posts')
-      .select('slug, title, content, date, category, summary, lang, updated, image')
-      .eq('slug', slug)
-      .single();
-  
-    if (error) {
-      console.error("Ошибка при загрузке поста:", error.message);
-      return null;
-    }
-  
-    return data;
-  }
-  
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
-    console.log("Fetching post by slug:", slug);
-    const { data, error } = await supabase
-      .from('posts')
-      .select('*')
-      .eq('slug', slug)
-      .single();
-  
-    if (error) {
-      console.log("ОШибка при загрузке по слагу:", error.message);
-      return null;
-    }
-    return data;
-  }
+  const response = await directus.request(
+    readItems('posts', {
+      filter: {
+        slug: { _eq: slug },
+        published: { _eq: true },
+      },
+      limit: 1,
+      fields: postFields,
+    })
+  );
+
+  const posts = response as Post[];
+
+  return posts.length > 0 ? posts[0] : null;
+}
+
+export async function getPostData(slug: string, language: string): Promise<Post | null> {
+  const response = await directus.request(
+    readItems('posts', {
+      filter: {
+        slug: { _eq: slug },
+        lang: { _eq: language },
+        published: { _eq: true },
+      },
+      limit: 1,
+      fields: postFields,
+    })
+  );
+
+  const posts = response as Post[];
+  return posts.length > 0 ? posts[0] : null;
+}
