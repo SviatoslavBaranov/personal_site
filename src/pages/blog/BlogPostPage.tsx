@@ -6,9 +6,12 @@ import Sidebar from "@/components/Sidebar";
 import type { Post } from "@/types/blog-types";
 import ReactMarkdown from "react-markdown"; 
 import remarkGfm from "remark-gfm";
+import { useTranslation } from "react-i18next";
 
 const BlogPostPage = () => {
-  const { slug, lang } = useParams<{ slug: string, lang: string }>();
+  const { slug } = useParams<{ slug: string }>();
+  const { i18n } = useTranslation();
+  const lang = i18n.language ?? 'en';
   const navigate = useNavigate();
   const [post, setPost] = useState<Post | null>(null);
 

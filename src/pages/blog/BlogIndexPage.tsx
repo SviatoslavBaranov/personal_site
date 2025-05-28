@@ -7,6 +7,8 @@ import Sidebar from "@/components/Sidebar";
 import type { Post } from "@/types/blog-types";
 import { useTranslation } from "react-i18next";
 
+
+
 const BlogIndexPage = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [page, setPage] = useState(1);
@@ -78,13 +80,13 @@ const BlogIndexPage = () => {
   const filteredPosts = posts.filter((post) => {
     const matchesCategory = category ? post.category === category : true;
     const matchesSearch =
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.summary.toLowerCase().includes(searchQuery.toLowerCase());
+      (post.title?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false) ||
+      (post.summary?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
     return matchesCategory && matchesSearch;
   });
 
   const hasMorePosts = posts.length < totalPosts;
-
+  
   return (
     <div className="max-w-6xl mx-auto px-4 py-1">
       <Navbar

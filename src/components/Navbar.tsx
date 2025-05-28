@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
@@ -14,8 +14,8 @@ type NavbarProps = {
 const Navbar: React.FC<NavbarProps> = ({ onCategorySelect, onSearch }) => {
   const { t } = useTranslation();
   const categories = [`${t('navbar.news')}`, `${t('navbar.guides')}`, `${t('navbar.analysis')}`, `${t('navbar.projects')}`, `${t('navbar.opinions')}`];
-  //const categories = ["Новости", "Гайды", "Аналитика", "Проекты", "Мнения"];
-
+  const [, setSearchParams] = useSearchParams();
+  
   return (
     <Disclosure as="nav" className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
       {({ open }) => (
@@ -55,13 +55,19 @@ const Navbar: React.FC<NavbarProps> = ({ onCategorySelect, onSearch }) => {
             {/* Поиск — только для больших экранов */}
             <div className="hidden md:flex items-center gap-2 bg-gray-100 px-3 py-2 rounded-xl ml-auto">
               <button
-              onClick={() => i18n.changeLanguage('ru')}
+              onClick={() => {
+                i18n.changeLanguage('ru');
+                setSearchParams({}); // reset filters
+              }}
               className="px-2 py-1 text-sm border border-gray-300 rounded hover:bg-gray-300 transition"
             >
               RU
             </button>
             <button
-              onClick={() => i18n.changeLanguage('en')}
+              onClick={() => {
+                i18n.changeLanguage('en');
+                setSearchParams({}); // reset filters
+              }}
               className="px-2 py-1 text-sm border border-gray-300 rounded hover:bg-gray-300 transition"
             >
               EN
