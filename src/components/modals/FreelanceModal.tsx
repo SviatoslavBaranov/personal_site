@@ -134,6 +134,7 @@ const FreelanceModal: React.FC = () => {
                       <form onSubmit={handleSubmit} className="space-y-4 w-full md:flex-1 max-h-[50vh] overflow-y-auto">
                           <input
                           type="text"
+                          required
                           placeholder={t('freelanceModal.form_name_plhldr')}
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -142,6 +143,7 @@ const FreelanceModal: React.FC = () => {
                           />
                           <input
                           type="email"
+                          required
                           placeholder="Email"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}

@@ -14,15 +14,20 @@ const BlogPostPage = () => {
   const lang = i18n.language ?? 'en';
   const navigate = useNavigate();
   const [post, setPost] = useState<Post | null>(null);
+  const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
 
   useEffect(() => {
     if (slug) {
-      getPostData(slug, lang ?? 'en').then(setPost).catch(console.error);
+      setLoading(true);
+      getPostData(slug, lang ?? 'en')
+        .then(setPost)
+        .catch(console.error)
+        .finally(() => setLoading(false));
     }
   }, [slug, lang]);
 
-  if (!post) {
+  if (!post && !loading) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center space-y-6">
         <div className="text-gray-500 text-xl">
@@ -37,7 +42,7 @@ const BlogPostPage = () => {
       </div>
     );
   }
-  
+  if (!post) return null;
   return (
     <div className="max-w-6xl mx-auto px-4 py-1">
       
@@ -64,6 +69,7 @@ const BlogPostPage = () => {
             <img
               src={buildImageUrl(post.image)}
               alt={post.title}
+              loading="lazy"
               className="rounded-xl w-full object-cover max-h-[600px]"
             />
 
@@ -102,5 +108,3 @@ const BlogPostPage = () => {
 };
 
 export default BlogPostPage;
-
-// if user first open a post and after that click to change the lang -> cont. loading 

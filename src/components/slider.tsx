@@ -77,13 +77,9 @@ const ImageSlider = () => {
                 <img
                   src={src}
                   alt={`slide-${imgIndex}`}
+                  loading="lazy"
                   className="rounded-xl shadow-lg cursor-grab active:cursor-grabbing w-full"
                 />
-                {/* {position === 'center' && (
-                  <div className="mt-10 px-6 py-5 bg-white/30 backdrop-blur-md rounded-full text-sm text-gray-800 shadow-md">
-                    {label}
-                  </div>
-                )} */}
               </motion.div>
             );
           })}

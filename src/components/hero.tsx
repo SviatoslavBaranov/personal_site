@@ -7,11 +7,12 @@ const Hero: React.FC = () => {
   const { t } = useTranslation();
 
     return (
-    <section className="min-h-screen flex-col md:flex-row items-center justify-center px-6 md:px-0 py-12 flex bg-white">
+    <section className="min-h-screen flex-col md:flex-row items-center justify-center px-6 md:px-0 py-0 flex bg-white">
     
     <div className="w-40 h-40 md:w-1/2 md:h-full flex items-center justify-center mb-6 md:mb-0 bg-gray-300">
       <img
         src={max}
+        loading="lazy"
         alt="Max photo"
         className="w-40 h-40 md:w-full md:h-full rounded-full md:rounded-none object-cover"
       />
