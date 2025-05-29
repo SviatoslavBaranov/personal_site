@@ -22,7 +22,13 @@ export const buildImageUrl = (image?: string | { id: string }): string | undefin
   return undefined;
 };
 
-export async function getSortedPostsdata(page: number, limit: number, language: string): Promise<{ posts: Post[]; total: number }> {
+export async function getSortedPostsdata(
+  page: number,
+  limit: number,
+  language: string,
+  category?: string,
+  searchQuery?: string
+): Promise<{ posts: Post[]; total: number }> {
   const offset = (page - 1) * limit;
 
   const response = await directus.request(
@@ -30,6 +36,15 @@ export async function getSortedPostsdata(page: number, limit: number, language: 
       filter: {
         lang: { _eq: language },
         published: { _eq: true },
+        ...(category ? { category: { _eq: category } } : {}),
+        ...(searchQuery
+          ? {
+              _or: [
+                { title: { _contains: searchQuery } },
+                { summary: { _contains: searchQuery } }
+              ],
+            }
+          : {}),
       },
       sort: ['-date'],
       limit,

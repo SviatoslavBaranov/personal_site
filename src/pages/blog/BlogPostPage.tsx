@@ -4,10 +4,9 @@ import { getPostData } from "@/lib/blog";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 import type { Post } from "@/types/blog-types";
-import ReactMarkdown from "react-markdown"; 
-import remarkGfm from "remark-gfm";
 import { useTranslation } from "react-i18next";
 import { buildImageUrl } from "@/lib/blog";
+import "./typography.css";
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -57,9 +56,11 @@ const BlogPostPage = () => {
             />
 
           
-            <div className="prose prose-lg max-w-none text-gray-800 mt-10">
-              <ReactMarkdown children={post.content} remarkPlugins={[remarkGfm]} />
-            </div>
+            <div
+              className="rich-content mt-10"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+              
+            ></div>
           </div>
         </div>
 

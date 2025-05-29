@@ -23,7 +23,7 @@ const BlogIndexPage = () => {
     const fetchInitialPosts = async () => {
       setIsLoading(true);
       try {
-        const { posts: initialPosts, total } = await getSortedPostsdata(1, 5, i18n.language);
+        const { posts: initialPosts, total } = await getSortedPostsdata(1, 5, i18n.language, category, searchQuery);
         setPosts(
           initialPosts.map((post) => ({
             ...post,
@@ -40,13 +40,13 @@ const BlogIndexPage = () => {
     };
 
     fetchInitialPosts();
-  }, [i18n.language]);
+  }, [i18n.language, category, searchQuery]);
 
   const loadMorePosts = async () => {
     const nextPage = page + 1;
     setIsLoading(true);
     try {
-      const { posts: newPosts } = await getSortedPostsdata(nextPage, 5, i18n.language);
+      const { posts: newPosts } = await getSortedPostsdata(nextPage, 5, i18n.language, category, searchQuery);
       setPosts((prev) => [
         ...prev,
         ...newPosts.map((post) => ({
