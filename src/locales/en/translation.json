@@ -34,7 +34,8 @@
     "form_send_btn": "Send",
     "aler_success": "Message sent successfully!",
     "alert_fail": "Something went wrong. Please try again later.",
-    "alert_fail_server": "Server error. Please try again soon."
+    "alert_fail_server": "Server error. Please try again soon.",
+    "loading": "Loading..."
   },
   "interviewModal": {
     "title": "Ready for the Interview",
