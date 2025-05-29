@@ -23,7 +23,19 @@ const BlogPostPage = () => {
   }, [slug, lang]);
 
   if (!post) {
-    return <div className="text-center mt-20 text-gray-600">Загрузка...</div>;
+    return (
+      <div className="flex flex-col items-center justify-center py-20 text-center space-y-6">
+        <div className="text-gray-500 text-xl">
+          404 — {t('blogPostPage.no_post')}
+        </div>
+        <button
+          onClick={() => navigate('/blog')}
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+        >
+          {t('sidebar.back_btn')}
+        </button>
+      </div>
+    );
   }
   
   return (

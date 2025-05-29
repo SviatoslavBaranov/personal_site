@@ -77,5 +77,8 @@
     "hire_text": "I'm open for interview and cooperation offers",
     "hire_btn": "Call for an interview",
     "back_btn": "Back to other posts"
+  },
+  "blogPostPage": {
+    "no_post": "Post not found"
   }
 }
