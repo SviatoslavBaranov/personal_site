@@ -1,6 +1,6 @@
 import React from "react";
 import { useModalStore } from "@/store/modalStore";
-import { PopupButton } from 'react-calendly';
+const PopupButton = React.lazy(() => import('react-calendly').then(mod => ({ default: mod.PopupButton })));
 import { useTranslation } from "react-i18next";
 
 
@@ -41,12 +41,14 @@ const InterviewModal: React.FC = () => {
                     {t('interviewModal.ps')}
                   </p>
                   <div className="flex justify-end gap-4">
-                      <PopupButton
-                          url="https://calendly.com/baranov_si/30min"
-                          rootElement={document.getElementById('root')!}
-                          text={t('interviewModal.interview_btn')}
-                          className="bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700 transition"
-                      />
+                      <React.Suspense fallback={<div className="text-sm text-gray-400">Loading...</div>}>
+                        <PopupButton
+                            url="https://calendly.com/baranov_si/30min"
+                            rootElement={document.getElementById('root')!}
+                            text={t('interviewModal.interview_btn')}
+                            className="bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700 transition"
+                        />
+                      </React.Suspense>
                     <a
                       href="/CV_R_Baranov_SI_2025.pdf"
                       target="_blank"

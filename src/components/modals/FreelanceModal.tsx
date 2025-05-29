@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useModalStore } from "@/store/modalStore";
-import { PopupButton } from 'react-calendly';
+const PopupButton = React.lazy(() => import('react-calendly').then(mod => ({ default: mod.PopupButton })));
 import { useTranslation } from 'react-i18next';
 
 interface FormData {
@@ -120,13 +120,14 @@ const FreelanceModal: React.FC = () => {
                       </button>
                     </div>
                     <div className="w-full sm:w-auto flex items-center">
-                      <PopupButton
-                        url="https://calendly.com/baranov_si/30min"
-                        rootElement={document.getElementById('root')!}
-                        text={t('freelanceModal.appoint_btn')}
-                        className="bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700 transition w-full sm:w-auto"
-                        
-                      />
+                      <React.Suspense fallback={<div className="text-sm text-gray-400">{t('freelanceModal.loading')}</div>}>
+                        <PopupButton
+                          url="https://calendly.com/baranov_si/30min"
+                          rootElement={document.getElementById('root')!}
+                          text={t('freelanceModal.appoint_btn')}
+                          className="bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700 transition w-full sm:w-auto"
+                        />
+                      </React.Suspense>
                     </div>
                   </div>
                   {showForm && (

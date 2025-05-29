@@ -48,3 +48,9 @@ logs/
 *.log
 tmp/
 *.tmp
+
+# My mac 
+*.swp
+
+# Vite 
+.vite/
