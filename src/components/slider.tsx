@@ -22,7 +22,7 @@ type Position = (typeof positions)[number];
 const positionStyles: Record<Position, { x: string; y: string, scale: number; zIndex: number; opacity: number }> = {
   farLeft: { x: "-120%", y: "-60%", scale: 0.6, zIndex: 1, opacity: 0},
   left:    { x: "-80%", y: "-30%", scale: 0.8, zIndex: 2, opacity: 0.5 },
-  center:  { x: "0%", y: "0%",   scale: 1,   zIndex: 5, opacity: 1 },
+  center:  { x: "0%", y: "0%",   scale: 1.5,   zIndex: 5, opacity: 1 },
   right:   { x: "80%", y: "-30%",  scale: 0.8, zIndex: 2, opacity: 0.5 },
   farRight:{ x: "120%", y: "-60%",  scale: 0.6, zIndex: 1, opacity: 0 },
 };
@@ -40,14 +40,14 @@ const ImageSlider = () => {
   const centerLabel = images[centerIndex].label;
 
   const handleDragEnd = (_:unknown, info: {offset: {x: number} }) => {
-    if(info.offset.x<-50) cycle(1);
-    else if (info.offset.x>50)cycle(-1);
+    if(info.offset.x<-30) cycle(1);
+    else if (info.offset.x>30)cycle(-1);
   };
 
   return (
     <section className="h-screen flex items-center justify-center bg-gradient-to-br from-white via-gray-100 to-gray-200 id='portfolio' ">
-      <div className="relative w-[80vw] h-[90vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 backdrop-blur-xl bg-white/20 rounded-2xl shadow-2xl border border-white/30 mx-8 my-12" />
+      <div className="relative w-[95vw] h-[100vh] md:w-[80vw] md:h-[90vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 backdrop-blur-xl bg-white/40 rounded-xl shadow-2xl border border-white/30 mx-4 my-6 md:mx-8 md:my-12" />
         
         
           {indexes.map((imgIndex, posIndex) => {
@@ -70,8 +70,11 @@ const ImageSlider = () => {
                   zIndex: style.zIndex,
                 }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
-                style={{ 
-                  width: "20vw" ,
+                style={{
+                  width: "30vw",
+                  height: "28vw",
+                  maxWidth: "240px",
+                  maxHeight: "140px"
                 }}
               >
                 <img
@@ -90,13 +93,13 @@ const ImageSlider = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.2 }}
             className="px-6 py-4 bg-white/40 backdrop-blur-md rounded-full text-sm text-gray-900 shadow-md font-medium">
             {centerLabel}
           </motion.div>
         </div>
 
-        <div className="absolute bottom-0.5 flex gap-6 z-10">
+        <div className="absolute bottom-8 flex gap-6 z-10">
           <button
             className="w-12 h-12 rounded-full bg-white/30 backdrop-blur-md shadow-md text-gray-800 hover:bg-white/50 transition flex items-center justify-center"
             onClick={() => cycle(1)}

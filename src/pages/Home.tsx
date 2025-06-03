@@ -13,13 +13,15 @@ const Home = () => {
       <section id="home" className='h-screen snap-start bg-gray-100'>
         <Hero />
       </section>
-      
-      <FreelanceSection />
-      <About />
       <section id="portfolio" className='h-screen snap-start '>
         <Slider />
       </section>
-      <footer className='h-screen snap-start'>
+      <About />
+      
+      
+      
+      <FreelanceSection />
+      <footer className=' snap-start'>
         <Footer />
       </footer>
     </div>

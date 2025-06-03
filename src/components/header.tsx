@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useModalStore } from '@/store/modalStore';
 import { Menu, X } from 'lucide-react';
@@ -8,10 +8,32 @@ import i18n from '@/i18n';
 const Header: React.FC = () => {
   const openModal = useModalStore((state) => state.openModal);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [hideHeader, setHideHeader] = useState(false);
   const { t } = useTranslation();
   
   const { modal } = useModalStore(); //скрывать хэдер на момент просмотра модалок
-  if (modal) return null;
+
+  useEffect(() => {
+    const footer = document.getElementById('footer');
+    if (!footer) return;
+
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        setHideHeader(entry.isIntersecting);
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(footer);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  if (modal || hideHeader) return null;
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/30 backdrop-blur-md shadow-md border-b border-white/40">
@@ -82,6 +104,20 @@ const Header: React.FC = () => {
               <Link to="/blog" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600">
                 {t('header.blog')}
               </Link>
+            </li>
+            <li className="flex space-x-2 mt-4">
+              <button
+                onClick={() => { i18n.changeLanguage('ru'); setMenuOpen(false); }}
+                className="px-2 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100 transition"
+              >
+                RU
+              </button>
+              <button
+                onClick={() => { i18n.changeLanguage('en'); setMenuOpen(false); }}
+                className="px-2 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100 transition"
+              >
+                EN
+              </button>
             </li>
           </ul>
         </div>
