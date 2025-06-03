@@ -82,13 +82,13 @@ const FreelanceSection: React.FC = () => {
             <div className='relative z-10 h-full flex justify-around items-center gap-16'>
                 <button
                     onClick={() => openModal('freelance')}
-                    className='w-42 h-42 bg-white/20 backdrop-blur-md rounded-full shadow-lg justify-center text-xl font-semibold hover:scale-150 transition text-blue-900'    
+                    className='w-28 h-28 md:w-42 md:h-42 bg-white/20 backdrop-blur-md rounded-full shadow-lg justify-center text-base md:text-xl font-semibold hover:scale-125 transition text-blue-900'    
                 >
                     {t('freelance.btn_order')}
                 </button>
                 <button
                     onClick={() => openModal('interview')}
-                    className='w-42 h-42 bg-white/20 backdrop-blur-md rounded-full shadow-lg justify-center text-xl font-semibold hover:scale-150 transition text-blue-900'
+                    className='w-28 h-28 md:w-42 md:h-42 bg-white/20 backdrop-blur-md rounded-full shadow-lg justify-center text-base md:text-xl font-semibold hover:scale-125 transition text-blue-900'
                 >
                     {t('freelance.btn_interview')}
                 </button>
