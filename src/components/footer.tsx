@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
         </div>
   
         {/* Dark Footer */}
-        <div className="bg-gray-900 text-gray-300 py-12 px-6">
+        <div className="bg-gray-900 text-gray-300 py-12 px-6  overflow-y-auto]">
           <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 className="text-xl font-semibold mb-4 text-gray-500">Contact</h3>

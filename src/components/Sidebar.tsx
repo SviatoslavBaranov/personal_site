@@ -12,7 +12,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
   const { t } = useTranslation();
   
   return (
-    <div className="space-y-6 sticky top-20">
+    <div className="space-y-6 sticky top-20 w-full max-w-sm mx-auto md:mx-0 shrink-0 min-h-[300px] px-4 md:px-0">
       <div className="p-4 bg-gradient-to-r from-blue-100 to-blue-200 rounded-xl shadow-md">
         <h3 className="text-lg font-semibold text-blue-800 mb-2">{t('sidebar.order_title')}</h3>
         <p className="text-sm text-gray-700 mb-3">{t('sidebar.order_text')}</p>

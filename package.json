@@ -2,13 +2,14 @@
   "name": "carousel1",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "typecheck": "tsc --noEmit && echo 'TypeScript: ошибок не найдено.'",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "dev:server": "ts-node-dev server/index.ts"
+    "dev:server": "tsx watch server/index.ts"
   },
   "dependencies": {
     "@directus/sdk": "^19.1.0",
@@ -17,6 +18,7 @@
     "@supabase/supabase-js": "^2.49.4",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.5",
+    "compression": "^1.8.0",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
@@ -44,6 +46,7 @@
   "devDependencies": {
     "@eslint/js": "^9.25.0",
     "@tailwindcss/postcss": "^4.1.5",
+    "@types/compression": "^1.8.0",
     "@types/cors": "^2.8.18",
     "@types/express": "^5.0.2",
     "@types/node": "^22.15.19",
@@ -61,6 +64,7 @@
     "rollup-plugin-visualizer": "^6.0.1",
     "tailwindcss": "^4.1.5",
     "ts-node-dev": "^2.0.0",
+    "tsx": "^4.19.4",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.30.1",
     "vite": "^6.3.5"

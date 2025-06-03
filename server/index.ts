@@ -2,18 +2,22 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
+import compression from "compression";
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
 console.log('EMAIL_USER:', process.env.EMAIL_USER || 'не задан');
 
 const app = express();
+app.use(compression());
 const PORT = process.env.PORT || 5050;
 
 app.use(cors());
 app.use(express.json());
 
-app.get('api/ping', (_req, res) => {
+app.get('/api/ping', (_req, res) => {
   res.send('pong');
 });
 
@@ -53,6 +57,15 @@ app.post('/api/contact', async (req, res) => {
     console.error('❌ Ошибка при отправке письма:', err);
     res.status(500).json({ error: "Не удалось отправить письмо"});
   }
+});
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const distPath = path.join(__dirname, '../dist');
+
+app.use(express.static(distPath));
+
+app.use((_, res) => {
+  res.sendFile(path.join(distPath, 'index.html'));
 });
 
 // Запускаем сервер

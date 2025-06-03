@@ -15,7 +15,7 @@ const PostCard: React.FC<PostCardProps> = ({ slug, title, summary, date, image, 
         <img
           src={typeof image === 'string' ? image : image?.id ? `http://localhost:8055/assets/${image.id}` : undefined}
           alt={title}
-          loading="lazy"
+          
           className="w-full h-48 md:h-full object-cover rounded-lg"
         />
       </div>
