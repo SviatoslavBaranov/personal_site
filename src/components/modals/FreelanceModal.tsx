@@ -76,14 +76,14 @@ const FreelanceModal: React.FC = () => {
               onClick={() => !loading && openModal(null)}
           >
               <div 
-                  className="bg-white p-6 rounded-xl shadow-lg max-w-lg w-full relative"
+                  className="bg-white p-6 rounded-xl shadow-lg max-w-lg w-full relative mt-10 sm:mt-0"
                   onClick={(e) => e.stopPropagation()}
               >
-                <div className="max-h-[90vh] overflow-y-auto">
+                <div className="max-h-[90vh] overflow-y-auto pt-6">
                   <button
                       onClick={() => !loading && openModal(null)}
                       disabled={loading}
-                      className="absolute top-2 right-4 text-gray-500 hover:text-gray-700 text-xl disabled:opacity-50"
+                      className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-xl disabled:opacity-50 z-10"
                   >
                       ×
                   </button>

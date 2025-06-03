@@ -9,6 +9,9 @@ const Header: React.FC = () => {
   const openModal = useModalStore((state) => state.openModal);
   const [menuOpen, setMenuOpen] = useState(false);
   const { t } = useTranslation();
+  
+  const { modal } = useModalStore(); //скрывать хэдер на момент просмотра модалок
+  if (modal) return null;
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/30 backdrop-blur-md shadow-md border-b border-white/40">
