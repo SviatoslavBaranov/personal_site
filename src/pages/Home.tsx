@@ -5,6 +5,7 @@ import Footer from '../components/footer';
 import FreelanceSection from '../components/FreelanceSection';
 import About from '../components/about';
 import React from 'react';
+import Offer from '@/components/offer';
 
 const Home = () => {
   return (
@@ -17,7 +18,7 @@ const Home = () => {
         <Slider />
       </section>
       <About />
-      
+      <Offer />
       
       
       <FreelanceSection />

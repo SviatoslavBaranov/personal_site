@@ -80,5 +80,16 @@
   },
   "blogPostPage": {
     "no_post": "Post not found"
+  },
+  "offer": {
+    "title": "How the process works",
+    "step1_title": "You submit a request",
+    "step1_text": "Briefly describe your task or project — via the form, email, or Telegram.",
+    "step2_title": "We schedule a call",
+    "step2_text": "We’ll have a short discovery call to clarify goals, requirements, timeline, and preferences. No fluff.",
+    "step3_title": "I design your solution",
+    "step3_text": "I create the architecture, UI, and logic — focused on speed, simplicity, and real business value.",
+    "step4_title": "You get results",
+    "step4_text": "A ready-to-go website or MVP, launched on time and aligned with your goals."
   }
 }
