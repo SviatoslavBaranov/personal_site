@@ -1,6 +1,6 @@
 import { createDirectus, rest } from '@directus/sdk';
 
-const BACKEND_URL = "http://localhost:8055/"
+const BACKEND_URL = "http://89.47.163.251:8055/"
 
 const client = createDirectus(BACKEND_URL)
   .with(rest({credentials: 'include'}));
