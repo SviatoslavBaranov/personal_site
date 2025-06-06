@@ -17,8 +17,8 @@ const postFields = [
 ];
 
 export const buildImageUrl = (image?: string | { id: string }): string | undefined => {
-  if (typeof image === 'string') return `http://localhost:8055/assets/${image}`;
-  if (typeof image === 'object' && image?.id) return `http://localhost:8055/assets/${image.id}`;
+  if (typeof image === 'string') return `http://89.47.163.251:8055/assets/${image}`;
+  if (typeof image === 'object' && image?.id) return `http://89.47.163.251:8055/assets/${image.id}`;
   return undefined;
 };
 
