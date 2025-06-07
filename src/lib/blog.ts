@@ -81,7 +81,14 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 
   const posts = response as Post[];
 
-  return posts.length > 0 ? posts[0] : null;
+  if (posts.length > 0) {
+    const post = posts[0];
+    return {
+      ...post,
+      image: buildImageUrl(typeof post.image === 'string' ? post.image : post.image?.id),
+    };
+  }
+  return null;
 }
 
 export async function getPostData(slug: string, language: string): Promise<Post | null> {
@@ -98,5 +105,12 @@ export async function getPostData(slug: string, language: string): Promise<Post 
   );
 
   const posts = response as Post[];
-  return posts.length > 0 ? posts[0] : null;
+  if (posts.length > 0) {
+    const post = posts[0];
+    return {
+      ...post,
+      image: buildImageUrl(typeof post.image === 'string' ? post.image : post.image?.id),
+    };
+  }
+  return null;
 }
