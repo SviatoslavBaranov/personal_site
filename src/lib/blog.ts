@@ -15,10 +15,11 @@ const postFields = [
   'updated_at',
   'published',
 ];
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const buildImageUrl = (image?: string | { id: string }): string | undefined => {
-  if (typeof image === 'string') return `http://89.47.163.251:8055/assets/${image}`;
-  if (typeof image === 'object' && image?.id) return `http://89.47.163.251:8055/assets/${image.id}`;
+  if (typeof image === 'string') return `${BASE_URL}/assets/${image}`;
+  if (typeof image === 'object' && image?.id) return `${BASE_URL}/assets/${image.id}`;
   return undefined;
 };
 

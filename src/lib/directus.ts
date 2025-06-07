@@ -1,8 +1,6 @@
 import { createDirectus, rest } from '@directus/sdk';
 
-const BACKEND_URL = "http://89.47.163.251:8055/"
-
-const client = createDirectus(BACKEND_URL)
+const client = createDirectus(import.meta.env.VITE_API_URL)
   .with(rest({credentials: 'include'}));
 
 export default client;
