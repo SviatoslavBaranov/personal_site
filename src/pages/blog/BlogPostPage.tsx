@@ -66,12 +66,14 @@ const BlogPostPage = () => {
             <p className="prose prose-lg max-w-none text-gray-800 mb-5 mt-10">{post.summary}</p>
 
             
-            <img
-              src={buildImageUrl(post.image)}
-              alt={post.title}
-              loading="lazy"
-              className="rounded-xl w-full object-cover max-h-[600px]"
-            />
+            {post.image && (
+              <img
+                src={buildImageUrl(post.image)}
+                alt={post.title}
+                loading="lazy"
+                className="rounded-xl w-full object-cover max-h-[600px]"
+              />
+            )}
 
           
             <div
