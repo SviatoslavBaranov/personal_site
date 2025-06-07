@@ -4,7 +4,7 @@ import BlogIndexPage from './pages/blog/BlogIndexPage';
 import BlogPostPage from './pages/blog/BlogPostPage'; 
 import Home from './pages/Home';
 import ModalContainer from '@/components/modals/ModalContainer';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
 
 
 const App = () => {

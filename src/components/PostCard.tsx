@@ -7,13 +7,13 @@ type PostCardProps = PostMeta
 
 const PostCard: React.FC<PostCardProps> = ({ slug, title, summary, date, image, category }) => {
   const { t } = useTranslation();
-  
+  const BASE_URL = import.meta.env.VITE_API_URL;
   return (
     <div className="bg-gray-50 p-4 rounded-xl shadow-md flex flex-col md:flex-row gap-4 hover:shadow-lg transition">
       {/* Картинка слева */}
       <div className="w-full md:w-1/3 flex-shrink-0">
         <img
-          src={typeof image === 'string' ? image : image?.id ? `http://localhost:8055/assets/${image.id}` : undefined}
+          src={typeof image === 'string' ? image : image?.id ? `${BASE_URL}/assets/${image.id}` : undefined}
           alt={title}
           
           className="w-full h-48 md:h-full object-cover rounded-lg"
