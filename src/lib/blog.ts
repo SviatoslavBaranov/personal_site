@@ -18,6 +18,7 @@ const postFields = [
 const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const buildImageUrl = (image?: string | { id: string }): string | undefined => {
+  console.log(image);
   if (typeof image === 'string') return `${BASE_URL}/assets/${image}`;
   if (typeof image === 'object' && image?.id) return `${BASE_URL}/assets/${image.id}`;
   return undefined;
@@ -63,7 +64,7 @@ export async function getSortedPostsdata(
 
   return {
     posts: normalizedPosts,
-    total: posts.length // optionally replace this with a total count query if pagination UI needs it
+    total: posts.length 
   };
 }
 

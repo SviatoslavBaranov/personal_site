@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 import type { Post } from "@/types/blog-types";
 import { useTranslation } from "react-i18next";
-import { buildImageUrl } from "@/lib/blog";
 import "./typography.css";
 
 const BlogPostPage = () => {
@@ -66,9 +65,9 @@ const BlogPostPage = () => {
             <p className="prose prose-lg max-w-none text-gray-800 mb-5 mt-10">{post.summary}</p>
 
             
-            {post.image && (
+            {post.image && typeof post.image === 'string' && (
               <img
-                src={buildImageUrl(post.image)}
+                src={post.image}
                 alt={post.title}
                 loading="lazy"
                 className="rounded-xl w-full object-cover max-h-[600px]"
