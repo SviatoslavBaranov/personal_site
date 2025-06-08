@@ -7,7 +7,7 @@ export interface SidebarProps {
   onSearch?: (query: string) => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = () => {
+const Sidebar: React.FC<SidebarProps> = ({ onCategorySelect, onSearch }) => {
   const { openModal } = useModalStore();
   const { t } = useTranslation();
   
