@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
     return (
     <section className="flex-col md:flex-row items-center justify-center px-6 md:px-0 py-0 pt-24 md:pt-0 flex bg-white md:h-screen">
     
-    <div className="w-40 h-40 md:w-1/2 md:h-full flex items-center justify-center mb-6 md:mb-0 bg-gray-300">
+    <div className="w-40 h-40 md:w-1/2 md:h-full flex items-center justify-center mb-6 md:mb-0 overflow-hidden">
       <img
         src={max}
         alt="Max photo"
