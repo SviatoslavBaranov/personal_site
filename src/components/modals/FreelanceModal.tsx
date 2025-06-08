@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useModalStore } from "@/store/modalStore";
-const PopupButton = React.lazy(() => import('react-calendly').then(mod => ({ default: mod.PopupButton })));
+const PopupButton = React.lazy(async () => {
+  const mod = await import('react-calendly');
+  if (!mod.PopupButton) {
+    throw new Error("PopupButton is not exported from react-calendly");
+  }
+  return { default: mod.PopupButton };
+});
 import { useTranslation } from 'react-i18next';
 
 interface FormData {
