@@ -63,9 +63,9 @@ const Header: React.FC = () => {
           <li><a href="#about" className="text-gray-600 hover:text-blue-600">{t('header.skills')}</a></li>
           <li><a href="#portfolio" className="text-gray-600 hover:text-blue-600">{t('header.portfolio')}</a></li>
           <li>
-            <Link to="/blog" className="text-gray-600 hover:text-blue-600">
+            {/* <Link to="/blog" className="text-gray-600 hover:text-blue-600">
               {t('header.blog')}
-            </Link>
+            </Link> */}
           </li>
           <li className="flex space-x-2 -mt-1">
             <button
@@ -101,9 +101,9 @@ const Header: React.FC = () => {
             <li><a href="#about" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600">{t('header.skills')}</a></li>
             <li><a href="#portfolio" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600">{t('header.portfolio')}</a></li>
             <li>
-              <Link to="/blog" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600">
+              {/* <Link to="/blog" onClick={() => setMenuOpen(false)} className="text-gray-700 hover:text-blue-600">
                 {t('header.blog')}
-              </Link>
+              </Link> */}
             </li>
             <li className="flex space-x-2 mt-4">
               <button
